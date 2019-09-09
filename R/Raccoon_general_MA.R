@@ -126,11 +126,11 @@ if (doTax){ ## simply save the blast files, that's even faster than
 }
 
 ### Bugging probably an edge case with an empty amplicon
-## trackingF <- getPipelineSummary(MAR2) 
+#trackingF <- getPipelineSummary(MAR2) 
 
-plotAmpliconNumbers(MAR2, cluster_cols= F)
+plotAmpliconNumbers(MAR2, cluster_cols= T, cluster_row=F, cutree_cols= 2)
 
-## plotPipelineSummary(trackingF) 
+#plotPipelineSummary(trackingF) 
 ## plotPipelineSummary(trackingF) + scale_y_log10()
 
 lapply(getTaxonTable(MAR2), function (x) table(as.vector(x[, "phylum"])))
@@ -139,6 +139,9 @@ lapply(getTaxonTable(MAR2), function (x) table(as.vector(x[, "species"])))
 
 PS.l <- toPhyloseq(MAR2, samples=colnames(MAR2), multi2Single=FALSE)
 PS <- toPhyloseq(MAR2, samples=colnames(MAR2), multi2Single=TRUE)
+
+## saveRDS(PS.l, file="/SAN/Victors_playground/Metabarcoding/AA_Raccoon/PhyloSeqList_Raccall.Rds") ###For primer analysis (Victor)
+## saveRDS(PS, file="/SAN/Victors_playground/Metabarcoding/AA_Raccoon/PhyloSeqCombi_Raccall.Rds") ###For Raccoon analysis 
 
 
 ## ## just commented out everything that will work much more nicely
